@@ -1,18 +1,32 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!',
+    joke: 'That is a funny joke',
+  },
+  methods: {
+    getJoke: function () {
+      let that = this;
+      axios.get('https://autumnfish.cn/api/joke').then(
+        function (response) {
+          console.log(response.data);
+          that.joke = response.data;
+        },
+        function (err) {
+          console.log(err);
+        }
+      );
+    },
   },
 });
 
 document.querySelector('.get').onclick = function () {
+  let that = this;
   axios.get('https://autumnfish.cn/api/joke/list?num=6').then(
     function (response) {
-      console.log(response);
+      console.log(response.data);
+      that.joke = response.data;
     },
-    function (err) {
-      console.log(err);
-    }
+    function (err) {}
   );
 };
 
