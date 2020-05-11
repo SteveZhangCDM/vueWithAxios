@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Search</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="search-form">
+        <div class="logo">
+          <img src="" alt="" />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="input-text"
+            placeholder="please input the city name"
+            v-model="city"
+            @keyup.enter="searchWeather"
+          />
+          <button class="input-btn">search</button>
+        </div>
+        <div class="hotkey">
+          <a href="" @click="changeCity('北京')">Beijing</a>
+          <a href="" @click="changeCity('上海')">Shanghai</a>
+          <a href="" @click="changeCity('杭州')">Hangzhou</a>
+        </div>
+      </div>
+      <ul class="weather-list">
+        <li v-for="item in weatherList">
+          <div class="info-type">
+            <span class="iconfont">{{item.type}}</span>
+          </div>
+          <div class="info-temp">{{item.low}}~{{item.high}}</div>
+          <div class="info-date">{{item.date}}</div>
+        </li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
